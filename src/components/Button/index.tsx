@@ -9,6 +9,7 @@ interface ButtonProps {
   children: ReactNode
   className?: string
   onClick?: () => void
+  dataAttribute?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -19,7 +20,8 @@ const Button: React.FC<ButtonProps> = ({
   children,
   className,
   onClick,
-  color
+  color,
+  dataAttribute
 }) => {
   const buttonStyle: React.CSSProperties = {
     width,
@@ -29,12 +31,11 @@ const Button: React.FC<ButtonProps> = ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    border: 'none',
-    cursor: 'pointer'
+    border: 'none'
   }
 
   return (
-    <button style={buttonStyle} className={className} onClick={onClick}>
+    <button style={buttonStyle} className={className} onClick={onClick} data-testid={dataAttribute}>
       {typeof icon === 'string' ? (
         <img src={icon} alt='Icon' className='icon' />
       ) : (

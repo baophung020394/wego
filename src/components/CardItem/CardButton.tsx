@@ -14,8 +14,7 @@ const CardButton: React.FC<CardButtonProps> = ({
   className = 'card__buttons'
 }) => {
   const CardButtonStyle: React.CSSProperties = {
-    backgroundColor,
-    cursor: 'pointer'
+    backgroundColor
   }
 
   return (

@@ -13,8 +13,10 @@ import CardButton from '@components/CardItem/CardButton'
 
 interface ItemProps {
   food: Food
+  dataAttribute?: string
 }
-const Item: React.FC<ItemProps> = ({ food }) => {
+
+const Item: React.FC<ItemProps> = ({ food, dataAttribute }) => {
   const getPromotion = () => {
     switch (food.promotion) {
       case 'gift':
@@ -42,7 +44,7 @@ const Item: React.FC<ItemProps> = ({ food }) => {
   }
 
   return (
-    <Card>
+    <Card dataAttribute={dataAttribute}>
       <CardContent>
         <CardPromotion backgroundColor={getBackgroundPromotion()}> {getPromotion()}</CardPromotion>
         <ImageCustom src={food.imageUrl} alt={Item.name} className='card__image' />

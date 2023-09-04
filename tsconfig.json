@@ -26,8 +26,9 @@
       "@apis/*": ["src/apis/*"],
       "@hooks/*": ["src/hooks/*"],
       "@constant/*": ["src/constant/*"],
+      "@__mocks__/*": ["src/__mocks__/*"],
       "@types/react-hook-form": ["node_modules/@types/react-hook-form"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "fileTransformer.js"]
 }

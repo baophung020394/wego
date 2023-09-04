@@ -6,16 +6,21 @@ interface CardProps {
   color?: string
   children: ReactNode
   className?: string
+  dataAttribute?: string
 }
 
-const Card: React.FC<CardProps> = ({ backgroundColor = 'transparent', children, className = 'card' }) => {
+const Card: React.FC<CardProps> = ({
+  dataAttribute,
+  backgroundColor = 'transparent',
+  children,
+  className = 'card'
+}) => {
   const CardStyle: React.CSSProperties = {
-    backgroundColor,
-    cursor: 'pointer'
+    backgroundColor
   }
 
   return (
-    <div style={CardStyle} className={className}>
+    <div style={CardStyle} className={className} data-testid={dataAttribute}>
       {children}
     </div>
   )

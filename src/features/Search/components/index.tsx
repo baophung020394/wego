@@ -1,10 +1,11 @@
 import React, { ReactNode, useEffect, useState } from 'react'
+import CloseIcon from '@assets/images/food/close.png'
 import './Search.scss'
 
 interface SearchProps {
-  onSearch: (query: string, categoryId: string | null) => void // Callback khi thực hiện tìm kiếm
-  selectedCategoryId: string | null // categoryId từ Filter
-  icon?: string | ReactNode // Định kiểu cho icon
+  onSearch: (query: string, categoryId: string | null) => void
+  selectedCategoryId: string | null
+  icon?: string | ReactNode
 }
 
 const Search: React.FC<SearchProps> = ({ icon, onSearch, selectedCategoryId }) => {
@@ -13,32 +14,18 @@ const Search: React.FC<SearchProps> = ({ icon, onSearch, selectedCategoryId }) =
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const query = event.target.value
     setSearchQuery(query)
-    // Gọi callback onSearch ngay sau khi người dùng thay đổi nội dung
     onSearch(query, selectedCategoryId)
+  }
+
+  const handleClearSearch = () => {
+    setSearchQuery('') // Xoá văn bản khi nút "X" được nhấn
+    onSearch('', selectedCategoryId) // Gọi hàm onSearch để xử lý việc tìm kiếm
   }
 
   useEffect(() => {
     onSearch(searchQuery, selectedCategoryId)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery, selectedCategoryId])
-
-  // useEffect(() => {
-  //   // Tạo một biến trạng thái để lưu trạng thái hiện tại của searchQuery và selectedCategoryId
-  //   let currentSearchQuery = searchQuery
-  //   let currentSelectedCategoryId = selectedCategoryId
-
-  //   // Tạo một hàm để kiểm tra xem có thay đổi không
-  //   const hasChanged = () => {
-  //     return currentSearchQuery !== searchQuery || currentSelectedCategoryId !== selectedCategoryId
-  //   }
-
-  //   // Gọi onSearch nếu có sự thay đổi
-  //   if (hasChanged()) {
-  //     onSearch(currentSearchQuery, currentSelectedCategoryId)
-  //     currentSearchQuery = searchQuery
-  //     currentSelectedCategoryId = selectedCategoryId
-  //   }
-  // }, [searchQuery, selectedCategoryId, onSearch])
 
   return (
     <div className='search'>
@@ -48,6 +35,11 @@ const Search: React.FC<SearchProps> = ({ icon, onSearch, selectedCategoryId }) =
         icon && <span className='icon'>{icon}</span>
       )}
       <input type='text' placeholder='Enter restaurant name' value={searchQuery} onChange={handleSearchChange} />
+      {searchQuery && (
+        <button className='clear-button' onClick={handleClearSearch}>
+          <img src={CloseIcon} alt='' />
+        </button>
+      )}
     </div>
   )
 }

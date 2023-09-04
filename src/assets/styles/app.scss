@@ -39,6 +39,12 @@ img {
   height: auto;
 }
 
+button {
+  @include responsive(1024px) {
+    cursor: unset !important;
+  }
+}
+
 //========= Container class ==========//
 .container {
   width: 100%;

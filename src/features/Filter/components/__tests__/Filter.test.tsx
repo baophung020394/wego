@@ -1,49 +1,96 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
-import Filter from '..' // Đảm bảo đường dẫn đúng
-import { Provider } from 'react-redux' // Import Provider
-import store from '@stores/index' // Thay thế bằng tệp cấu hình Redux của bạn
-// import '@testing-library/jest-dom/extend-expect'
+import store from '@stores/index'
 import '@testing-library/jest-dom'
+import { fireEvent, render, screen } from '@testing-library/react'
+import React from 'react'
+import { Provider } from 'react-redux'; // Import Provider
+import Filter from '..'; // Đảm bảo đường dẫn đúng
 
 const items = [
-  { id: '1', name: 'Category 1' },
-  { id: '2', name: 'Category 2' }
-  // Thêm các items khác nếu cần
+  {
+    id: '6288a89f1f0152b8c2cd512b',
+    name: 'Sushi'
+  },
+  {
+    id: '6288a89f7338764f2071a8a8',
+    name: 'Pizza'
+  },
+  {
+    id: '6288a89f70dc8cf93b71609b',
+    name: 'Hot Meals'
+  },
+  {
+    id: '6288a89fe6c2fe0b758360fe',
+    name: 'Desserts'
+  },
+  {
+    id: '6288a89fac9e970731bfaa7b',
+    name: 'Drinks'
+  }
 ]
 
-const selectedCategoryId = '1' // Chọn một category để kiểm tra
-const onCategoryChange = jest.fn() // Tạo một mock function để theo dõi việc gọi hàm này
-
-test('should render todo component', async () => {
+test('renders categories from items prop', () => {
   render(
     <Provider store={store}>
-      <Filter items={items} selectedCategoryId={selectedCategoryId} onCategoryChange={onCategoryChange} />
+      <Filter items={items} selectedCategoryId={null} onCategoryChange={() => {}} />
     </Provider>
   )
-  const element = screen.getByText('All')
-  expect(element).toBeInTheDocument()
+
+  items.forEach((item) => {
+    const categoryButton = screen.getByText(item.name)
+    expect(categoryButton).toBeInTheDocument()
+  })
 })
-// test('renders Filter component with categories', () => {
-//   const { getByText } = render(
-//     <Filter items={items} selectedCategoryId={selectedCategoryId} onCategoryChange={onCategoryChange} />
-//   )
 
-//   // Kiểm tra xem các nút category đã hiển thị
-//   items.forEach((item) => {
-//     const categoryButton = getByText(item.name)
-//     // expect(categoryButton).toBeElem()
+test('calls onCategoryChange with correct categoryId when a category button is clicked', () => {
+  const onCategoryChange = jest.fn()
 
-//     // Kiểm tra xem nút category đã có class "filter__button--active" khi được chọn
-//     if (item.id === selectedCategoryId) {
-//       expect(categoryButton).toHaveClass('filter__button--active')
-//     }
-//   })
+  render(
+    <Provider store={store}>
+      <Filter items={items} selectedCategoryId={null} onCategoryChange={onCategoryChange} />
+    </Provider>
+  )
 
-//   // // Kiểm tra xem nút "All" đã có class "filter__button--active" khi selectedCategoryId là null
-//   // const allButton = getByText('All')
-//   // expect(allButton).toBeInTheDocument()
-//   // if (selectedCategoryId === null) {
-//   //   expect(allButton).toHaveClass('filter__button--active')
-//   // }
-// })
+  const categoryButton = screen.getByText('Sushi')
+  fireEvent.click(categoryButton)
+
+  expect(onCategoryChange).toHaveBeenCalledWith('6288a89f1f0152b8c2cd512b')
+})
+
+test('applies active style to "All" button when selectedCategoryId is null', () => {
+  render(
+    <Provider store={store}>
+      <Filter items={[]} selectedCategoryId={null} onCategoryChange={() => {}} />
+    </Provider>
+  )
+
+  const allButton = screen.getByText('All')
+  expect(allButton).toHaveClass('filter__button--active')
+})
+
+test('renders categories when API call succeeds', async () => {
+  render(
+    <Provider store={store}>
+      <Filter items={items} selectedCategoryId={null} onCategoryChange={() => {}} />
+    </Provider>
+  )
+  expect(screen.getByTestId('all')).toBeInTheDocument()
+  expect(screen.getByTestId('category-6288a89f1f0152b8c2cd512b')).toBeInTheDocument()
+})
+
+test('calls handleCategoryChange with null when "All" button is clicked', () => {
+  // Tạo mock function để theo dõi việc gọi hàm handleCategoryChange
+  const handleCategoryChangeMock = jest.fn()
+
+  render(
+    <Provider store={store}>
+      <Filter items={[]} selectedCategoryId={null} onCategoryChange={handleCategoryChangeMock} />
+    </Provider>
+  )
+
+  // Tìm và nhấp vào nút "All"
+  const allButton = screen.getByText('All')
+  fireEvent.click(allButton)
+
+  // Kiểm tra xem hàm handleCategoryChange đã được gọi với tham số null
+  expect(handleCategoryChangeMock).toHaveBeenCalledWith(null)
+})

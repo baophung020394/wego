@@ -14,8 +14,7 @@ const CardPromotion: React.FC<CardPromotionProps> = ({
   className = 'card__promotion'
 }) => {
   const CardPromotionStyle: React.CSSProperties = {
-    backgroundColor,
-    cursor: 'pointer'
+    backgroundColor
   }
 
   return (

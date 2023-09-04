@@ -37,7 +37,8 @@ module.exports = (env, argv) => {
         '@features': path.resolve(__dirname, './src/features'),
         '@apis': path.resolve(__dirname, './src/apis'),
         '@hooks': path.resolve(__dirname, './src/hooks'),
-        '@constant': path.resolve(__dirname, './src/constant')
+        '@constant': path.resolve(__dirname, './src/constant'),
+        '@__mocks__': path.resolve(__dirname, './src/__mocks__')
       }
     },
     // File đầu vào cho webpack, file này thường là file import mọi file khác

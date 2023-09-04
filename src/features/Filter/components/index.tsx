@@ -28,7 +28,7 @@ const Filter: React.FC<FilterProps> = ({ items, selectedCategoryId, onCategoryCh
         <Button
           className={`${selectedCategoryId === null ? 'filter__button--active' : ''} filter__button`}
           onClick={() => handleCategoryChange(null)}
-          data-test
+          dataAttribute={`all`}
         >
           All
         </Button>
@@ -37,6 +37,7 @@ const Filter: React.FC<FilterProps> = ({ items, selectedCategoryId, onCategoryCh
             key={item.id}
             className={`${item.id === selectedCategoryId ? 'filter__button--active' : ''} filter__button`}
             onClick={() => handleCategoryChange(item)}
+            dataAttribute={`category-${item.id}`}
           >
             {item.name}
           </Button>

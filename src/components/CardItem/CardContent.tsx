@@ -14,8 +14,7 @@ const CardContent: React.FC<CardContentProps> = ({
   className = 'card__content'
 }) => {
   const CardContentStyle: React.CSSProperties = {
-    backgroundColor,
-    cursor: 'pointer'
+    backgroundColor
   }
 
   return (

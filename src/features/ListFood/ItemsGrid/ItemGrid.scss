@@ -20,14 +20,17 @@
     max-height: 50px;
     box-sizing: border-box;
     cursor: pointer;
-    border: 2px solid $border-faebb2;
+    border: 2px solid $border-f9d85f;
     transition: background-color 0.3s;
     color: $text-2c3940;
     font-weight: 600;
     font-size: 14px;
     &:hover {
-      background-color: $background-666568;
+      background-color: $border-f9d85f;
       color: #ffffff;
+    }
+    @include responsive(1024px) {
+      cursor: unset !important;
     }
   }
 }

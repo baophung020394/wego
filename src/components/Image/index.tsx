@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './Image.scss'
 
 interface ImageProps {
   src: string
@@ -51,7 +52,7 @@ const ImageCustom: React.FC<ImageProps> = ({ src, alt, width, height, border, cl
   return (
     <div className={className}>
       {isLoading ? (
-        <div>Loading...</div> // Hiển thị một thông báo loading trong khi hình ảnh đang được tải
+        <div className='skeleton'></div>
       ) : (
         <img src={imageSrc} alt={alt} onError={handleError} style={imageStyle} />
       )}

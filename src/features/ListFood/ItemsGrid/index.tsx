@@ -34,14 +34,18 @@ function ItemGrid({ items, selectedCategoryId }: ItemGridProps) {
     <>
       <div className='item-grid'>
         {items && items?.length > 0 ? (
-          items.slice(0, visibleItems).map((item, index) => <Item key={index} food={item} />)
+          items
+            .slice(0, visibleItems)
+            .map((item, index) => <Item key={index} food={item} dataAttribute={`food-${item.id}`} />)
         ) : (
           <NotFound searchTerm={searchTerm} categoryName={categoryName} message='was not found in the Drink category' />
         )}
       </div>
-      {items && visibleItems < items.length && (
+      {items && items.length > 0 && (
         <div className='load-more'>
-          <button onClick={loadMore}>+ Show More</button>
+          <button onClick={loadMore} data-testid='showmore'>
+            + Show More
+          </button>
         </div>
       )}
     </>

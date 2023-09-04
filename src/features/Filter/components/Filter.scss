@@ -3,7 +3,7 @@
 .filter {
   margin-bottom: 30px;
   display: inline-block;
-  border: 2px solid $border-faebb2;
+  border: 2px solid $border-f9d85f;
   width: auto;
   border-radius: 12px;
   overflow: hidden;
@@ -25,12 +25,13 @@
     font-weight: 500;
     padding: 15px 20px;
     max-height: 45px;
-    border-right: 2px solid $border-faebb2 !important;
+    border-right: 2px solid $border-f9d85f !important;
     min-width: 60px;
+    cursor: pointer;
     @include responsive(500px) {
       width: 100% !important;
       border-right: none !important;
-      border-bottom: 2px solid $border-faebb2 !important;
+      border-bottom: 2px solid $border-f9d85f !important;
       &:last-child {
         border-bottom: none !important;
       }
@@ -41,14 +42,18 @@
     }
 
     &--active {
-      background-color: $border-faebb2 !important;
+      background-color: $border-f9d85f !important;
       font-weight: 600;
-      color: $text-2c3940;
+      color: $text-2c3940 !important;
     }
 
     &:hover {
-      background-color: $background-666568 !important;
-      color: #ffffff !important;
+      background-color: $border-f9d85f !important;
+      // color: #ffffff !important;
+      @include responsive(1024px) {
+        background-color: $border-f9d85f !important;
+        color: $text-2c3940 !important;
+      }
     }
   }
 }

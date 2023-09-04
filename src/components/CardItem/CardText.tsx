@@ -10,8 +10,7 @@ interface CardTextProps {
 
 const CardText: React.FC<CardTextProps> = ({ backgroundColor = 'transparent', children, className = 'card__text' }) => {
   const CardTextStyle: React.CSSProperties = {
-    backgroundColor,
-    cursor: 'pointer'
+    backgroundColor
   }
 
   return (

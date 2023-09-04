@@ -11,6 +11,7 @@
   padding: 15px 24px;
   box-sizing: border-box;
   margin-bottom: 50px;
+  position: relative;
   @include responsive(768px) {
     max-width: 100%;
   }
@@ -36,6 +37,21 @@
       font-size: 14px;
       color: $text-8d989d;
       font-weight: 500;
+    }
+  }
+
+  .clear-button {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 1;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    img {
+      width: 18px;
+      height: 18px;
     }
   }
 }
