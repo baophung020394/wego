@@ -1,0 +1,50 @@
+// @import '../../assets/styles/scss/mixins';
+@import './scss/theme-var.module.scss';
+@import './scss/mixins.module.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $bg-color;
+  font-family: 'Inter', sans-serif !important;
+  margin: 0;
+  padding: 0;
+  @include responsive(768px) {
+    min-width: 400px;
+  }
+}
+
+/*
+* Elements
+*/
+button,
+a,
+p,
+span,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Inter', sans-serif !important;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+//========= Container class ==========//
+.container {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}

@@ -1,0 +1,41 @@
+@import '../../../assets/styles/app.scss';
+
+.search {
+  background-color: #ffffff;
+  border: 1px solid $border-f6f7f8;
+  border-radius: 12px;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  padding: 15px 24px;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  @include responsive(768px) {
+    max-width: 100%;
+  }
+  img {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  input {
+    border: none;
+    width: 100%;
+    flex: 1;
+    font-size: 14px;
+    color: $text-8d989d;
+    font-weight: 500;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+      color: $text-8d989d;
+      font-weight: 500;
+    }
+  }
+}

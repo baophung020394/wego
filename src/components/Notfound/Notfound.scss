@@ -1,0 +1,20 @@
+@import '../../assets/styles/app.scss';
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h1 {
+    color: $text-2c3940;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: $font-20;
+  }
+
+  p {
+    color: $text-8d989d;
+    font-size: $font-14;
+    font-weight: 500;
+  }
+}

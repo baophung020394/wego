@@ -1,0 +1,42 @@
+# Heath App
+## yarn install
+## yarn dev
+
+# Description
+- This is my template React 18 
+# The structure project
+src
+|__assets
+|__components
+|__features
+|__models
+|__pages
+|__routers
+|__stores
+
+The project is divided into 3 main parts
+|_Pages
+|__ features
+|___ components
+
+The features section will be responsible for handling all logic and pushing data to components. Components located in the features/<name>/components folder will only receive data via props and render to the interface.
+
+Use basic Typescript to define data types
+Use BEM for className
+Use mixins for responsive
+Use Lazy load component
+# Solution 
+Step 1: Separate the pages, see which components are difficult to do last.
+Step 2: Then build the layouts for the components in the right position
+Step 3: Conduct styling for each component
+Step 4: Responsive website
+
+## Login 
+Only click button login and save token on localstorage
+And then navigate to PrivateRouter are '/tops', '/myrecords'
+And If not login still access PublicRouter is '/columns'
+# DiffChart is the hardest part here.
+Because I haven't done much about charts, I have to learn about supporting charts for Reactjs. Then find a suitable chart and customize it as closely as possible.
+The chart used is react-chartjs-2
+Use faker to dummy data for chart
+

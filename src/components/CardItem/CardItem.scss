@@ -1,0 +1,80 @@
+@import '../../assets/styles/app.scss';
+
+.card {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1);
+  max-width: 360px;
+  cursor: pointer;
+
+  @include responsive(1024px) {
+    max-width: 100%;
+  }
+  @include responsive(500px) {
+    max-width: 100%;
+  }
+}
+
+.card__content {
+  position: relative;
+}
+
+.card__promotion {
+  position: absolute;
+  width: 50px;
+  height: 33px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 13px;
+  .promotion-icon {
+    img {
+      width: 28px !important;
+      height: 28px !important;
+    }
+  }
+}
+
+.card__image {
+  min-height: 150px;
+  img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover;
+  }
+}
+
+.card__text {
+  padding: 15px 20px;
+}
+
+.card__title {
+  color: $text-2c3940;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.card__buttons {
+  display: flex;
+  align-items: center;
+  button {
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 12px;
+    color: $text-4b5862;
+    padding: 10px 8px;
+    max-height: 30px;
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
+    img {
+      width: 14px;
+      height: 14px;
+      margin-right: 3px;
+    }
+  }
+}

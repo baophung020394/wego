@@ -1,0 +1,22 @@
+@import '../../assets/styles/app.scss';
+
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  // @include responsive(768px) {
+  //   right: 5%;
+  // }
+}
+
+.scroll-to-top-button.show {
+  opacity: 1;
+}
